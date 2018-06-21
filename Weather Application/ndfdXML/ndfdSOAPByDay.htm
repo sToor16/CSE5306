@@ -1,0 +1,408 @@
+<html>
+<head>
+<TITLE>National Weather Service (NWS) National Digital Foreast Database (NDFD) Data Summarized By Period and encoded in Digital Weather Markup Language (DWML)</TITLE>
+
+   <SCRIPT language="JavaScript">
+       <!-- Hide this script 
+
+    //  Provide a first guess at a date
+
+    var current_date = new Date()
+    var the_year = current_date.getFullYear()
+    var the_month = current_date.getMonth() + 1
+    var the_day = current_date.getDate()
+
+    if (the_month < 10)
+       var two_digit_month = "0" + the_month
+    else
+       var two_digit_month = the_month
+
+    if (the_day < 10)
+       var two_digit_day = "0" + the_day
+    else
+       var two_digit_day = the_day
+    
+    var date_of_call = the_year + "-" + two_digit_month + "-" + two_digit_day
+
+   // If user wants a single point turn on its inputs
+   function turnOnNDFDgenByDayInput()
+   {
+      //  Initialize everthing to off
+      turnOffEverything()
+
+      //  Turns on the input fields for product, time, elements
+      document.getElementById("NDFDgenByDayInput").style.display = "block"
+
+      // Turn on NDFDgenByDay client Input
+      document.getElementById("NDFDgenByDay").style.display = "block"
+      document.NDFDgenByDayForm.lat.value = "38.99"
+      document.NDFDgenByDayForm.lon.value = "-77.01"  
+   }
+
+   // If user wants multiple point functionality turn on its inputs
+   function turnOnNDFDgenByDayLatLonListInput()
+   {
+      //  Initialize everthing to off
+      turnOffEverything()
+
+      //  Turns on the input fields for product, time, elements
+      document.getElementById("NDFDgenByDayInput").style.display = "block"
+
+      //  Turn on NDFDgenByDayLatLonList Input
+      document.getElementById("NDFDgenByDayLatLonList").style.display = "block"
+      document.NDFDgenByDayForm.listLatLon.value = "38.99,-77.02 39.70,-104.80 47.6,-122.30"
+   }
+
+   // If user wants subgrid functionality turn on its inputs
+   function turnOnNDFDgenByDaySubgridInput()
+   {
+      //  Initialize everthing to off
+      turnOffEverything()
+
+      //  Turns on the input fields for product, time, elements
+      document.getElementById("NDFDgenByDayInput").style.display = "block"
+
+      //  Turn on Subgrid of Data Client Input
+      document.getElementById("NDFDgenByDaySubgrid").style.display = "block"
+      document.NDFDgenByDayForm.lat1.value = "35.00"
+      document.NDFDgenByDayForm.lon1.value = "-82.00"
+      document.NDFDgenByDayForm.lat2.value = "35.5"
+      document.NDFDgenByDayForm.lon2.value = "-81.50"
+      document.NDFDgenByDayForm.resolutionSub.value = "20.0"
+   }
+
+   // If user wants line functionality turn on its inputs
+   function turnOnNDFDgenByDayLineInput()
+   {
+      //  Initialize everthing to off
+      turnOffEverything()
+
+      //  Turns on the input fields for product, time, elements
+      document.getElementById("NDFDgenByDayInput").style.display = "block"
+
+      //  Turn on NDFDgenByDayLine Input
+      document.getElementById("NDFDgenByDayLine").style.display = "block"
+      document.NDFDgenByDayForm.endPoint1Lat.value = "38.99"
+      document.NDFDgenByDayForm.endPoint1Lon.value = "-77.01"
+      document.NDFDgenByDayForm.endPoint2Lat.value = "39.99"
+      document.NDFDgenByDayForm.endPoint2Lon.value = "-78.01"
+   }
+
+   // If user wants ZIP CODES functionality turn on its inputs
+   function turnOnNDFDgenByDayMultiZipCodeInput()
+   {
+      //  Initialize everthing to off
+      turnOffEverything()
+
+      //  Turns on the input fields for product, time, elements
+      document.getElementById("NDFDgenByDayInput").style.display = "block"
+
+      //  Turn on NDFDgenByDayMultiZipCode Input
+      document.getElementById("NDFDgenByDayMultiZipCode").style.display = "block"
+      document.NDFDgenByDayForm.zipCodeList.value = "20910 25414"
+   }
+
+   // If user wants Cities functionality turn on its inputs
+   function turnOnNDFDgenByDayMultiCitiesInput()
+   {
+      //  Initialize everthing to off
+      turnOffEverything()
+
+      //  Turns on the input fields for product, time, elements
+      document.getElementById("NDFDgenByDayInput").style.display = "block"
+
+      //  Turn on NDFDgenByDayMultiCities Input
+      document.getElementById("NDFDgenByDayMultiCities").style.display = "block"
+      document.NDFDgenByDayForm.citiesLevel.value = "12"
+   }
+
+   // If user wants SQUARE functionality turn on its inputs
+   function turnOnNDFDgenByDaySquareInput()
+   {
+      //  Initialize everthing to off
+      turnOffEverything()
+
+      //  Turns on the input fields for product, time, elements
+      document.getElementById("NDFDgenByDayInput").style.display = "block"
+
+      //  Turn on Subgrid of Data Client Input
+      document.getElementById("NDFDgenByDaySquare").style.display = "block"
+      document.NDFDgenByDayForm.centerPointLat.value = "38.0"
+      document.NDFDgenByDayForm.centerPointLon.value = "-97.4"
+      document.NDFDgenByDayForm.distanceLat.value = "50.0"
+      document.NDFDgenByDayForm.distanceLon.value = "50.0"
+      document.NDFDgenByDayForm.resolutionSquare.value = "20.0"
+   }
+
+   function turnOffEverything()
+   {
+      //  Turns off the input fields for product, time, elements
+      document.getElementById("NDFDgenByDayInput").style.display = "none"
+        
+      // Turn off NDFDgenByDay client Input
+      document.getElementById("NDFDgenByDay").style.display = "none"
+      document.NDFDgenByDayForm.lat.value = ""
+      document.NDFDgenByDayForm.lon.value = ""
+
+      //  Turn off Multi Point Client Input
+      document.getElementById("NDFDgenByDayLatLonList").style.display = "none"
+      document.NDFDgenByDayForm.listLatLon.value = ""
+
+      //  Turn off Subgrid of Data Client Input
+      document.getElementById("NDFDgenByDaySubgrid").style.display = "none"
+      document.NDFDgenByDayForm.lat1.value = ""
+      document.NDFDgenByDayForm.lon1.value = ""
+      document.NDFDgenByDayForm.lat2.value = ""
+      document.NDFDgenByDayForm.lon2.value = ""
+      document.NDFDgenByDayForm.resolutionSub.value = ""
+
+      //  Turn off Line Client Input
+      document.getElementById("NDFDgenByDayLine").style.display = "none"
+      document.NDFDgenByDayForm.endPoint1Lat.value = ""
+      document.NDFDgenByDayForm.endPoint1Lon.value = ""
+      document.NDFDgenByDayForm.endPoint2Lat.value = ""
+      document.NDFDgenByDayForm.endPoint2Lon.value = ""
+
+      //  Turn off Zip Code Client Input
+      document.getElementById("NDFDgenByDayMultiZipCode").style.display = "none"
+      document.NDFDgenByDayForm.zipCodeList.value = ""
+
+      //  Turn off Cities Client Input
+      document.getElementById("NDFDgenByDayMultiCities").style.display = "none"
+      document.NDFDgenByDayForm.citiesLevel.value = ""
+
+      //  Turn off Square of Data Client Input
+      document.getElementById("NDFDgenByDaySquare").style.display = "none"
+      document.NDFDgenByDayForm.centerPointLat.value = ""
+      document.NDFDgenByDayForm.centerPointLon.value = ""
+      document.NDFDgenByDayForm.distanceLat.value = ""
+      document.NDFDgenByDayForm.distanceLon.value = ""
+      document.NDFDgenByDayForm.resolutionSquare.value = ""
+   }
+
+   function eachLoad()
+   {
+      document.NDFDgenByDayForm.startDate.value = date_of_call
+
+      //  This returns the page to its original state with each reload
+      document.NDFDgenByDayForm.whichClient[0].checked = true
+      document.NDFDgenByDayForm.whichClient[1].checked = false
+      document.NDFDgenByDayForm.whichClient[2].checked = false
+      document.NDFDgenByDayForm.whichClient[3].checked = false
+      document.NDFDgenByDayForm.whichClient[4].checked = false
+      document.NDFDgenByDayForm.whichClient[5].checked = false
+      document.NDFDgenByDayForm.whichClient[6].checked = false
+
+      //  Initialize everthing to off
+      turnOffEverything()
+
+      //  Turns on the input fields for product, time, elements
+      document.getElementById("NDFDgenByDayInput").style.display = "block"
+        
+      // Turn on NDFDgenByDay client Input
+      document.getElementById("NDFDgenByDay").style.display = "block"
+      document.NDFDgenByDayForm.lat.value = "38.99"
+      document.NDFDgenByDayForm.lon.value = "-77.01"
+   }
+
+       //   End hiding script -->
+    </SCRIPT>
+
+</head>
+<body style="background-color:#FFF8DC;" onLoad="eachLoad();">
+<h2 style="color:blue;"><center>National Digital Forecast Database (NDFD) 
+                                Digital Weather Markup Language (DWML)<br />Generator<br />(Summarized By Time Period)</center></h2>
+
+<form name="NDFDgenByDayForm" method="get" action="ndfdSOAPclientByDay.php">
+
+  <p>This web page exercises NDFD SOAP service functionality.  
+     For more information on the NDFD SOAP service and its exposed functions, please see 
+     <a href="http://www.weather.gov/forecasts/xml/">http://www.weather.gov/forecasts/xml/</a>.<br /><br />
+     Select the functionality that you would like to run.</p>
+
+     <ol>
+        <table border="1" cellpadding="4" width="90%">
+           <tr>
+              <td><input type="radio" name="whichClient" value="NDFDgenByDay" onclick="turnOnNDFDgenByDayInput(); return true">NDFD Data For Single Point</td>
+              <td><input type="radio" name="whichClient" value="NDFDgenByDayLatLonList" onclick="turnOnNDFDgenByDayLatLonListInput(); return true" >NDFD Data For Multiple Points</td>
+              <td><input type="radio" name="whichClient" value="NDFDgenByDaySubgrid" onclick="turnOnNDFDgenByDaySubgridInput(); return true" >NDFD Data For Subgrid (Corner Points)*</td>
+           </tr>
+           <tr>
+              <td><input type="radio" name="whichClient" value="NDFDgenByDayLine" onclick="turnOnNDFDgenByDayLineInput(); return true">NDFD Data For A Line*</td>
+              <td><input type="radio" name="whichClient" value="NDFDgenByDaySquare" onclick="turnOnNDFDgenByDaySquareInput(); return true" >NDFD Data For Subgrid (Central Point)*</td>
+              <td><input type="radio" name="whichClient" value="NDFDgenByDayMultiZipCode" onclick="turnOnNDFDgenByDayMultiZipCodeInput(); return true" >NDFD Data For A Zip Code*</td>
+           </tr>
+           <tr>
+              <td colspan="4"><input type="radio" name="whichClient" value="NDFDgenByDayMultiCities" onclick="turnOnNDFDgenByDayMultiCitiesInput(); return true" >NDFD Data For NDFD Cities*</td>
+           </tr>
+        </table>
+     </ol><br />
+
+* This functionality involves two calls to the NDFD SOAP service.  
+  The first call obtains the points (latitude/longitude value) for the subgrid, line, zip code, or cities.  
+  The second call uses the points from the first call to obtain the DWML-encoded NDFD data.
+
+<hr />
+
+  <div ID="NDFDgenByDay" style="display: block">
+
+     <p>Sample Lat,Lon : (38.9936,-77.0224)</b>
+     <p>Location?</p>
+     <ol>
+        <table border="1" cellpadding="4" width="90%">
+           <tr>
+              <td>Latitude?<input type="text" name="lat" size="40" maxlength="80" value=""> (North is positive)</td>
+              <td>Longitude?<input type="text" name="lon" size="40" maxlength="80" value=""> (West is negative)</td>
+           </tr>
+        </table>
+     </ol>
+
+  </div>
+
+  <div ID="NDFDgenByDayLatLonList" style="display: block">
+
+     <p>Sample Points: 38.99,-77.02 39.70,-104.80 47.6,-122.30<p>
+     <p>List of Points?</p>
+     <ol>
+        <table border="1" cellpadding="4" width="90%">
+           <tr>
+              <td><textarea name="listLatLon" rows="5" cols="60">38.99,-77.02 39.70,-104.80 47.6,-122.30</textarea><br />
+              Enter one or more Latitude and Longitude pairs (i.e. 38.99,-77.02) with each pair separated by a single space<br /> 
+              San Jaun: 18.48,-66.08 Hilo HI: 19.69,-155.08 Guam: 13.5,144.9<br />
+              Alaska, Anchorage: 61.18,-149.19 Juneau: 58.38,-134.13 npacocn point: 15.0,-140.0<br /> </td>
+           </tr>
+        </table>
+     </ol>
+
+  </div>
+
+  <div ID="NDFDgenByDaySubgrid" style="display: block">
+
+     <p>Sample Points: 35.00 -82.00 35.5 -81.50<p>
+     <p>Lower Left and Upper Right Points?</p>
+     <ol>
+        <table border="1" cellpadding="4" width="90%">
+           <tr>
+              <td>Lower Left Lat? <input type="text" name="lat1" size="20" maxlength="40" value=""></td>
+              <td>Lower Left Lon? <input type="text" name="lon1" size="20" maxlength="40" value=""></td>
+           </tr>
+           <tr>
+              <td>Upper Right Lat? <input type="text" name="lat2" size="20" maxlength="40" value=""></td>
+              <td>Upper Right Lon? <input type="text" name="lon2" size="20" maxlength="40" value=""></td>
+           </tr>
+           <tr>
+              <td colspan="2">Resolution? <input type="text" name="resolutionSub" size="10" maxlength="20" value=""></td>
+           </tr>
+        </table>
+     </ol>
+
+  </div>
+
+  <div ID="NDFDgenByDayLine" style="display: block">
+
+     <p>Sample Line : (38.99,-77.01 39.99,-78.99)</b>
+     <p>Location?</p>
+     <ol>
+        <table border="1" cellpadding="4" width="90%">
+           <tr>
+              <td>End Point 1 Latitude <input type="text" name="endPoint1Lat" size="40" maxlength="80" value="">(North is positive)</td>
+              <td>End Point 1 Longitude <input type="text" name="endPoint1Lon" size="40" maxlength="80" value="">(West is negative)</td>
+           </tr>
+           <tr>
+              <td>End Point 2 Latitude <input type="text" name="endPoint2Lat" size="40" maxlength="80" value="">(North is positive)</td>
+              <td>End Point 2 Longitude? <input type="text" name="endPoint2Lon" size="40" maxlength="80" value="">(West is negative)</td>
+           </tr>
+        </table>
+     </ol>
+
+  </div>
+
+  <div ID="NDFDgenByDayMultiZipCode" style="display: block">
+
+     <p>NWS Headquarters Zip : 20910 25414<p>
+     <p>Zip Code List (One or more space separated zip codes)?</p>
+     <ol>
+        <table border="1" cellpadding="4" width="90%">
+           <tr>
+              <td><textarea name="zipCodeList" rows="5" cols="60"></textarea></td>
+           </tr>
+        </table>
+     </ol>
+
+  </div>
+
+  <div ID="NDFDgenByDaySquare" style="display: block">
+
+     <p>Sample Input: 35.00 -82.00 50.0 50.0 10<p>
+     <p>Central Point and Distances?</p>
+     <ol>
+        <table border="1" cellpadding="4" width="90%">
+           <tr>
+              <td>Center Point Lat? <input type="text" name="centerPointLat" size="20" maxlength="40" value=""></td>
+              <td>Center Point Lon? <input type="text" name="centerPointLon" size="20" maxlength="40" value=""></td>
+           </tr>
+           <tr>
+              <td>Distance Lat? <input type="text" name="distanceLat" size="20" maxlength="40" value=""></td>
+              <td>Distance Lon? <input type="text" name="distanceLon" size="20" maxlength="40" value=""></td>
+           </tr>
+           <tr>
+              <td colspan="2">Resolution? <input type="text" name="resolutionSquare" size="10" maxlength="20" value=""></td>
+           </tr>
+        </table>
+     </ol>
+
+  </div>
+
+  <div ID="NDFDgenByDayMultiCities" style="display: block">
+
+     <p>Cities Levels are 1, 2, 3, 4, 12, 34, and 1234<p>
+     <p>Cities Level?</p>
+     <ol>
+        <table border="1" cellpadding="4" width="90%">
+           <tr>
+              <td><input type="text" name="citiesLevel" size=40 maxlength=80 value=""></td>
+           </tr>
+        </table>
+     </ol>
+
+  </div>
+
+  <div ID="NDFDgenByDayInput" style="display: block">
+
+     <p>Format ?</p>
+     <ol>
+        <table border="1" cellpadding="4" width="60%">
+           <tr>
+	      <td>24 Hourly<input type="radio" name="format" value="24 hourly" checked></td>
+	      <td>12 Hourly<input type="radio" name="format" value="12 hourly"></td>
+           </tr>
+        </table>
+     </ol>
+
+     <p>Day ?</p>
+     <ol>
+        <table border="1" cellpadding="4" width="60%">
+           <tr>
+	      <td>Start Date<input type="text" name="startDate" value="2004-07-29"></td>
+	      <td>Number of Days<input type="text" name="numDays" value="7"</td>
+	   </tr>        
+        </table>
+     </ol>
+
+     <p>Unit ?</p>
+     <ol>
+        <table border="1" cellpadding="4" width="60%">
+           <tr>
+              <td>U.S. Standard<input type="radio" name="Unit" value="e" checked></td>
+              <td>Metric<input type="radio" name="Unit" value="m"></td>
+           </tr>
+        </table>
+     </ol>
+
+  </div>
+
+  <input type="submit" name="Submit" value="Submit">
+
+</form>
+</body>
+</html>

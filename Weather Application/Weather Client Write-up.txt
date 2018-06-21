@@ -1,0 +1,29 @@
+Weather Client
+Author : Shashank Gaikaiwari
+UTA ID : 1001165812
+Phone Number : (682) 556-8220
+
+Requirements :
+Software : Eclipse IDE
+Operating System : Windows 10
+
+References used for the project : 
+1) https://stackoverflow.com/questions/17821601/set-time-to-000000
+2) http://www.javased.com/index.php?api=javax.xml.datatype.XMLGregorianCalendar
+3) https://www.tutorialspoint.com/java_xml/java_stax_parse_document.htm
+4) https://www.youtube.com/watch?v=11iGyrvBhzc
+5) https://www.youtube.com/watch?v=6hqDMS-oJ9k
+6) https://www.youtube.com/watch?v=KFlDdb65w3U
+
+Steps to run the Weather Client :
+
+1) Extract the zip file(Using Extract Here). You will get a folder with the name of "WeatherClient" which has src folder inside 
+2) Open the Eclipse IDE.
+3) Click on File -> Import.
+4) In the Import Window, under General, Select the "Existing Projects into Workspace" and click on "Next".
+5) Click on "Browse..." that is beside the "Select root directory" and find the extracted folder and Select the "WeatherClient" folder.
+6) Make sure that the "WeatherClient" is checked under the "Projects" and then click on "Finish".
+7) Once the project is imported, verify if the "WeatherClient" contains the "src" folder and under that you have the 3 packages.
+8) The "weatherClient" package has a "WeatherClient.java".
+9) Run the "WeatherClient.java".
+10)Client Window opens up. Enter the latitude and longitude values for which you need the weather conditions for and click on "Fetch Details/Refresh". The parameters values are populated in their respective textboxes.

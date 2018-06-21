@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema targetNamespace="http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <s:complexType name="weatherParametersType">
+        <s:all>
+          <s:element name="maxt" type="s:boolean" />
+          <s:element name="mint" type="s:boolean" />
+          <s:element name="temp" type="s:boolean" />
+          <s:element name="dew" type="s:boolean" />
+          <s:element name="pop12" type="s:boolean" />
+          <s:element name="qpf" type="s:boolean" />
+          <s:element name="sky" type="s:boolean" />
+          <s:element name="snow" type="s:boolean" />
+          <s:element name="wspd" type="s:boolean" />
+          <s:element name="wdir" type="s:boolean" />
+          <s:element name="wx" type="s:boolean" />
+          <s:element name="waveh" type="s:boolean" />
+          <s:element name="icons" type="s:boolean" />
+          <s:element name="rh" type="s:boolean" />
+          <s:element name="appt" type="s:boolean" />
+        </s:all>
+      </s:complexType>
+    </s:schema>
+  </types>
+  <message name="NDFDgenRequest">
+    <part name="latitude" type="s:decimal" />
+    <part name="longitude" type="s:decimal" />
+    <part name="product" type="s:string" />
+    <part name="startTime" type="s:dateTime" />
+    <part name="endTime" type="s:dateTime" />
+    <part name="weatherParameters" type="s0:weatherParametersType" />
+  </message>
+  <message name="NDFDgenResponse">
+    <part name="dwmlOut" type="s:string" />
+  </message>
+  <message name="NDFDgenByDayRequest">
+    <part name="latitude" type="s:decimal" />
+    <part name="longitude" type="s:decimal" />
+    <part name="startDate" type="s:date" />
+    <part name="numDays" type="s:integer" />
+    <part name="format" type="s:string" />
+  </message>
+  <message name="NDFDgenByDayResponse">
+    <part name="dwmlByDayOut" type="s:string" />
+  </message>
+  <portType name="ndfdXMLPortType">
+    <operation name="NDFDgen">
+      <documentation>Returns National Weather Service digital weather forecast data.  Supports latitudes and longitudes for the Continental United States only.  Allowable values for the input variable "product" are "time-series" and "glance".  For both products, a start and end time are required.  For the time-series product, the input variable "weatherParameters" has array elements set to "true" to indicate which weather parameters are being requested.  If an array element is set to "false", data for that weather parameter are not to be returned.</documentation>
+      <input message="s0:NDFDgenRequest" />
+      <output message="s0:NDFDgenResponse" />
+    </operation>
+    <operation name="NDFDgenByDay">
+      <documentation>Returns National Weather Service digital weather forecast data.  Supports latitudes and longitudes for the Continental United States only.  Allowable values for the input variable "format" are "24 hourly" and "12 hourly".  The input variable "startDate" is a date string representing the first day of data to be returned. The input variable "numDays" is the integer number of days for which the user wants data.</documentation>
+      <input message="s0:NDFDgenByDayRequest" />
+      <output message="s0:NDFDgenByDayResponse" />
+    </operation>
+  </portType>
+  <binding name="ndfdXMLBinding" type="s0:ndfdXMLPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="NDFDgen">
+      <soap:operation soapAction="http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl#NDFDgen" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+    <operation name="NDFDgenByDay">
+      <soap:operation soapAction="http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl#NDFDgenByDay" style="rpc" />
+      <input>
+        <soap:body use="encoded" namespace="http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="http://www.weather.gov/forecasts/xml/DWMLgen/wsdl/ndfdXML.wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="ndfdXML">
+    <port name="ndfdXMLPort" binding="s0:ndfdXMLBinding">
+      <soap:address location="http://www.weather.gov/forecasts/xml/SOAP_server/ndfdXMLserver.php" />
+    </port>
+  </service>
+</definitions>
