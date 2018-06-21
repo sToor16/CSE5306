@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_144"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="E:/MS CS/Sem I/Distributed Systems/Labs/Lab 3/eclipselink.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Shashank/Downloads/Compressed/eclipselink/jlib/moxy/api/javax.xml.bind_2.2.12.v201410011542.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Shashank/Downloads/Compressed/eclipselink/jlib/moxy/jaxb-core_2.2.11.v201407311112.jar"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
